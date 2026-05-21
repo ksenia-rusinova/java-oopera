@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private double duration;
-    private Director director;
-    private ArrayList<Actor> listOfActors;
+    protected String title;
+    protected double duration;
+    protected Director director;
+    protected ArrayList<Actor> listOfActors;
 
     public Show(String title, double duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
@@ -20,31 +20,38 @@ public class Show {
         }
     }
 
-    public void addActorInList(String name, String surname, Gender gender, int height){
-        for (Actor actor : listOfActors) {
-            if (actor.getName().equals(name) &&
-                    actor.getSurname().equals(surname) &&
-                    actor.getHeight() == height) {
-                System.out.println("Актер с таким именем: " + name + ", фамилией: " + surname + " и ростом: " + height + " уже есть в списке.");
-                return;
-            }
+    public void printDirector(){
+        System.out.println("Информация о режиссёре: " + director);
+    }
+
+    public void addActorInList(String name, String surname, Gender gender, Integer height){
+        if (listOfActors.contains(new Actor(name, surname, gender, height))) {
+            System.out.println("Актер с таким именем: " + name + ", фамилией: " + surname + " и ростом: " + height + " уже есть в списке.");
+        } else {
+            listOfActors.add(new Actor(name, surname, gender, height));
         }
-        listOfActors.add(new Actor(name, surname, gender, height));
     }
 
     public void replaceActorInList(Actor newActor, String oldSurname){
-        boolean found = false;
+        int count = 0;
+        int index = -1;
 
         for(int i = 0; i < listOfActors.size(); i++){
-            if(listOfActors.get(i).getSurname().equals(oldSurname)){
-                listOfActors.set(i, newActor);
-                found = true;
-                break;
+            if(listOfActors.get(i).surname.equals(oldSurname)){
+                count++;
+                index = i;
             }
         }
 
-        if (!found) {
-            System.out.println("Актёр с фамилией " + oldSurname + " не найден в списке.");
+        switch (count) {
+            case 0:
+                System.out.println("Актёр с фамилией " + oldSurname + " не найден в списке.");
+                break;
+            case 1:
+                listOfActors.set(index, newActor);
+                break;
+            default:
+                System.out.println("В списке несколько актёров с фамилией " + oldSurname + ". Актер не заменен.");
         }
     }
 }

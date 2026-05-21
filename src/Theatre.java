@@ -15,20 +15,21 @@ public class Theatre {
         Director directorGoreVerbinski = new Director("Гор", "Вербински", Gender.MALE,22);
 
         MusicalShow filmF1 = new MusicalShow("F1", 2.35, directorJosephKosinski, listOfActorsFilm, "Ханс Циммер", "Джозеф Косински");
-        filmF1.addActorInList(actorBradPitt.getName(), actorBradPitt.getSurname(), actorBradPitt.getGender(), actorBradPitt.getHeight());
-        filmF1.addActorInList(actressKerryCondon.getName(), actressKerryCondon.getSurname(), actressKerryCondon.getGender(), actressKerryCondon.getHeight());
+        filmF1.addActorInList(actorBradPitt.name, actorBradPitt.surname, actorBradPitt.gender, actorBradPitt.height);
+        filmF1.addActorInList(actressKerryCondon.name, actressKerryCondon.surname, actressKerryCondon.gender, actressKerryCondon.height);
         filmF1.printListOfActors();
-        filmF1.replaceActorInList(actorJavierBardem, actressKerryCondon.getSurname());
+        filmF1.replaceActorInList(actorJavierBardem, actressKerryCondon.surname);
         filmF1.printListOfActors();
+        filmF1.printDirector();
 
         Ballet ballet = new Ballet("Пираты карибского моря", 2.00, directorGoreVerbinski, listOfActorsBallet,"Ханс Циммер", "Тед Эллиот", "Рудольф Нуреев");
-        ballet.addActorInList(actorJavierBardem.getName(), actorJavierBardem.getSurname(), actorJavierBardem.getGender(), actorJavierBardem.getHeight());
+        ballet.addActorInList(actorJavierBardem.name, actorJavierBardem.surname, actorJavierBardem.gender, actorJavierBardem.height);
         ballet.printListOfActors();
-        ballet.replaceActorInList(actorBradPitt, actressKerryCondon.getSurname());
+        ballet.replaceActorInList(actorBradPitt, actressKerryCondon.surname);
         ballet.printLibretto();
 
         Opera opera = new Opera("Гарри Поттер и проклятое дитя", 3.00, directorGoreVerbinski, listOfActorsOpera, "Джон Уильямс", "Дж.К. Роулинг", 100);
-        opera.addActorInList(actressKerryCondon.getName(), actressKerryCondon.getSurname(), actressKerryCondon.getGender(), actressKerryCondon.getHeight());
+        opera.addActorInList(actressKerryCondon.name, actressKerryCondon.surname, actressKerryCondon.gender, actressKerryCondon.height);
         opera.printListOfActors();
         opera.printLibretto();
     }
